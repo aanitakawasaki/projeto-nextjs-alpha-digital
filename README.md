@@ -1,1 +1,0 @@
-# projeto-nextjs-alpha-digital
