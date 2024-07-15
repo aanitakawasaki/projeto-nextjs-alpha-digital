@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Input from '../components/input';
-import Select from '../components/select';
-import Button from '../components/button';
-import ResultDisplay from '../components/resultDisplay';
+import Input from '../src/components/input';
+import Select from '../src/components/select';
+import Button from '../src/components/button';
+import ResultDisplay from '../src/components/resultDisplay';
 
 const Home = () => {
   const [amount, setAmount] = useState('');
@@ -15,16 +15,17 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Conversor de Moedas</h1>
-      <Input value={amount} onChange={(e) => setAmount(e.target.value)} />
-      <Select
-        options={[{ value: 'USD', label: 'Dólar Americano' }, { value: 'EUR', label: 'Euro' }]}
-        selected={currency}
-        onChange={(e) => setCurrency(e.target.value)}
-      />
-      <Button onClick={handleConvert}>Converter</Button>
-      <ResultDisplay result={result} />
+    <div className="container">
+      <title>Conversor de Moedas</title>
+      <main className="w-full max-w-md">
+        <h1 className="text-4xl font-bold mb-8">Conversor de Moedas</h1>
+        <div className="flex flex-col gap-4 mb-4">
+          <Select options={[{ value: 'USD', label: 'Dólar Americano' }]} selected="USD" onChange={() => {}} />
+          <Input value={100} onChange={() => {}} />
+        </div>
+        <Button onClick={() => {}}>Converter</Button>
+        <ResultDisplay result={486.00} />
+      </main>
     </div>
   );
 };
