@@ -78,9 +78,9 @@ const Home = () => {
             </Button>
             {/*aqui o botão será desabilitado (disabled) se a variável currency for uma string vazia (''), ou seja, o botão ficará desabilitado até que o usuário selecione uma moeda. */}
           </form>
-          <ResultDisplay result={result} />
-          {/*ResultDisplay recebe uma prop chamada result, que contém o valor resultante da conversão de moeda. quando o valor de result é atualizado, o componente ResultDisplay re-renderiza para mostrar o novo valor. */}
         </div>
+        <ResultDisplay result={result} />
+          {/*ResultDisplay recebe uma prop chamada result, que contém o valor resultante da conversão de moeda. quando o valor de result é atualizado, o componente ResultDisplay re-renderiza para mostrar o novo valor. */}
     </>
   );
 };
