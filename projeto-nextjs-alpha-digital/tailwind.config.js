@@ -7,6 +7,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'blue-100': '#080815',
+        'blue-200': '#0E0F25',
+        'blue-300': '#141534',
+        'blue-400': '#1F2151',
+        'blue-500': '#2F3279',
+        'blue-600': '#2F34AB',
+        'blue-700': '#4A5DCD',
+        'blue-800': '#7D8DEC',
+        'blue-900': '#B2B8DE',
+        'white': '#F1F2F6',
+      },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
         'plex': ['IBM Plex Mono', 'monospace'],
@@ -16,12 +28,34 @@ module.exports = {
         'button': ['16px', '20px'],
         'body': ['16px', '20px'],
         'label': ['12px', '16px'],
-        'span': ['16px', '20px'],
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      extend: {
+        typography: {
+          heading: {
+            fontFamily: 'Inter',
+            fontWeight: '700',
+            fontSize: '32px',
+            lineHeight: '48px',
+          },
+          button: {
+            fontFamily: 'Inter',
+            fontWeight: '600',
+            fontSize: '16px',
+            lineHeight: '20px',
+          },
+          body: {
+            fontFamily: 'Inter',
+            fontWeight: '400',
+            fontSize: '16px',
+            lineHeight: '20px',
+          },
+          label: {
+            fontFamily: 'Inter',
+            fontWeight: '400',
+            fontSize: '12px',
+            lineHeight: '16px',
+          },
+        },
       },
     },
   },
