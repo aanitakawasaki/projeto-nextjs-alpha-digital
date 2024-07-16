@@ -6,26 +6,33 @@ import ResultDisplay from '../src/components/resultDisplay';
 
 const Home = () => {
   const [amount, setAmount] = useState('');
-  const [currency, setCurrency] = useState('');
+  const [currency, setCurrency] = useState('USD'); // Valor padrão
   const [result, setResult] = useState('');
 
   const handleConvert = () => {
-    const mockResult = `Resultado simulado para ${amount} ${currency}`;
-    setResult(mockResult);
+    // Simulação da conversão
+    const rate = 4.86; // Taxa fictícia
+    const converted = amount * rate;
+    setResult(`${converted.toFixed(2)} BRL`);
   };
 
   return (
     <div className="container">
-      <title>Conversor de Moedas</title>
-      <main className="w-full max-w-md">
-        <h1 className="text-4xl font-bold mb-8">Conversor de Moedas</h1>
-        <div className="flex flex-col gap-4 mb-4">
-          <Select options={[{ value: 'USD', label: 'Dólar Americano' }]} selected="USD" onChange={() => {}} />
-          <Input value={100} onChange={() => {}} />
-        </div>
-        <Button onClick={() => {}}>Converter</Button>
-        <ResultDisplay result={486.00} />
-      </main>
+      <h1 className="text-3xl font-bold mb-4">Converter</h1>
+      <form className="space-y-4">
+        <label className="label" htmlFor="amount">Valor</label>
+        <Input id="amount" value={amount} onChange={e => setAmount(e.target.value)} />
+
+        <label className="label" htmlFor="currency">Moeda</label>
+        <Select id="currency"
+          options={[{ value: 'USD', label: 'Dólar Americano' }]}
+          selected={currency}
+          onChange={e => setCurrency(e.target.value)}
+        />
+
+        <Button onClick={handleConvert}>Converter em reais</Button>
+        {result && <div className="text-white mt-4 text-lg">Resultado: {result}</div>}
+      </form>
     </div>
   );
 };
