@@ -29,32 +29,30 @@ module.exports = {
         'body': ['16px', '20px'],
         'label': ['12px', '16px'],
       },
-      extend: {
-        typography: {
-          heading: {
-            fontFamily: 'Inter',
-            fontWeight: '700',
-            fontSize: '32px',
-            lineHeight: '48px',
-          },
-          button: {
-            fontFamily: 'Inter',
-            fontWeight: '600',
-            fontSize: '16px',
-            lineHeight: '20px',
-          },
-          body: {
-            fontFamily: 'Inter',
-            fontWeight: '400',
-            fontSize: '16px',
-            lineHeight: '20px',
-          },
-          label: {
-            fontFamily: 'Inter',
-            fontWeight: '400',
-            fontSize: '12px',
-            lineHeight: '16px',
-          },
+      typography: {
+        heading: {
+          fontFamily: 'Inter',
+          fontWeight: '700',
+          fontSize: '32px',
+          lineHeight: '48px',
+        },
+        button: {
+          fontFamily: 'Inter',
+          fontWeight: '600',
+          fontSize: '16px',
+          lineHeight: '20px',
+        },
+        body: {
+          fontFamily: 'Inter',
+          fontWeight: '400',
+          fontSize: '16px',
+          lineHeight: '20px',
+        },
+        label: {
+          fontFamily: 'Inter',
+          fontWeight: '400',
+          fontSize: '12px',
+          lineHeight: '16px',
         },
       },
     },

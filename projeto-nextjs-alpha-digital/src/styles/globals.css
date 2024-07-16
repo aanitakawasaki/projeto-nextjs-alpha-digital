@@ -5,18 +5,34 @@
 @tailwind utilities;
 
 body {
-  @apply bg-blue-100;
+  @apply bg-blue-100
+  min-h-screen flex flex-col justify-center items-center;
+}
+/*min-h-screen: Garante que o elemento <body> (ou o elemento pai escolhido) tenha uma altura mínima igual à altura da tela, permitindo que o container filho seja realmente centralizado verticalmente em telas pequenas.
+flex flex-col: Define o elemento pai como um container flexível com direção de fluxo em coluna.
+justify-center items-center: Centraliza os itens tanto verticalmente (justify-center) quanto horizontalmente (items-center) dentro do elemento pai.*/
+
+.title {
+  @apply text-blue-600
+  text-center
+  p-10
+  font-plex;
 }
 
 .container {
-  @apply mx-auto p-4 min-h-screen flex flex-col items-center justify-center text-white rounded-lg shadow-xl;
+  @apply bg-blue-400 text-white 
+  p-20
+  rounded-t-3xl rounded-b-3xl;
+  width: 45vw;
+  height: 45vw;
+  @apply font-inter;
 }
 
 .label {
-  @apply block text-sm font-medium text-white mb-1;
+  @apply text-orange-500;
 }
 
-.input, .select {
+/*.input, .select {
   @apply w-full bg-blue-700 text-white border border-blue-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 rounded-lg p-2;
 }
 
@@ -30,4 +46,4 @@ body {
 
 .resultDisplay {
   @apply text-blue-600 text-2xl font-bold mt-4;
-}
+} */

@@ -48,36 +48,40 @@ const Home = () => {
   ];
 
   return (
-    <div className="container">
-      <h1>
+    <>
+      <div>
+      <h1 className='title'>
         CONVERT
-      </h1>
-      <form onSubmit={handleConvert}>
-        {/*ao submeter o formulário, chamamos a função handleConvert */}
-        <label htmlFor="amount">
-          VALOR
-        </label>
-        <Input id="amount" value={amount} onChange={e => setAmount(e.target.value)} />
-        {/*o valor inicial do input é '', afinal foi definido acima useState('') para o [amount, setAmount], quando ele for modificado(onChange), será o valor do input*/}
+        </h1>
+      </div>
+        <div className="container">
+          <form onSubmit={handleConvert}>
+            {/*ao submeter o formulário, chamamos a função handleConvert */}
+            <label htmlFor="amount" className="label">
+              VALOR
+            </label>
+            <Input id="amount" value={amount} onChange={e => setAmount(e.target.value)} />
+            {/*o valor inicial do input é '', afinal foi definido acima useState('') para o [amount, setAmount], quando ele for modificado(onChange), será o valor do input*/}
 
-        <label className="label" htmlFor="currency">
-          MOEDA
-        </label>
-        <Select id="currency"
-          options={currencyOptions}
-          selected={currency}
-          onChange={e => setCurrency(e.target.value)}
-        />
-        {/*aqui ele coloca como opções as currencyOptions definidas acima. no selected ele pega o valor do useState de [currency, setCurrency] que tem como label a frase 'Selecione a moeda'. quando ele for modificado(onChange), currency será o valor do input*/}
+            <label htmlFor="currency" className="label">
+              MOEDA
+            </label>
+            <Select id="currency"
+              options={currencyOptions}
+              selected={currency}
+              onChange={e => setCurrency(e.target.value)}
+            />
+            {/*aqui ele coloca como opções as currencyOptions definidas acima. no selected ele pega o valor do useState de [currency, setCurrency] que tem como label a frase 'Selecione a moeda'. quando ele for modificado(onChange), currency será o valor do input*/}
 
-        <Button type="submit" disabled={!currency}>
-          Converter em reais
-        </Button>
-        {/*aqui o botão será desabilitado (disabled) se a variável currency for uma string vazia (''), ou seja, o botão ficará desabilitado até que o usuário selecione uma moeda. */}
-      </form>
-      <ResultDisplay result={result} />
-      {/*ResultDisplay recebe uma prop chamada result, que contém o valor resultante da conversão de moeda. quando o valor de result é atualizado, o componente ResultDisplay re-renderiza para mostrar o novo valor. */}
-    </div>
+            <Button type="submit" disabled={!currency}>
+              Converter em reais
+            </Button>
+            {/*aqui o botão será desabilitado (disabled) se a variável currency for uma string vazia (''), ou seja, o botão ficará desabilitado até que o usuário selecione uma moeda. */}
+          </form>
+          <ResultDisplay result={result} />
+          {/*ResultDisplay recebe uma prop chamada result, que contém o valor resultante da conversão de moeda. quando o valor de result é atualizado, o componente ResultDisplay re-renderiza para mostrar o novo valor. */}
+        </div>
+    </>
   );
 };
 
