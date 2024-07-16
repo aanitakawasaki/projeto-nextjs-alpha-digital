@@ -1,3 +1,5 @@
+//index.js é a página principal da minha aplicação
+
 import { useState } from 'react';
 import Input from '../src/components/input';
 import Select from '../src/components/select';
@@ -7,7 +9,7 @@ import axios from 'axios';  // Import Axios
 
 const Home = () => {
   const [amount, setAmount] = useState('');
-  const [currency, setCurrency] = useState('USD'); // Valor padrão
+  const [currency, setCurrency] = useState(''); // Valor padrão vazio
   const [result, setResult] = useState('');
   const [error, setError] = useState(null);  // Para lidar com erros
 
@@ -35,6 +37,7 @@ const Home = () => {
   };
 
   const currencyOptions = [
+    { value: '', label: 'Selecione a moeda' },
     { value: 'USD', label: 'Dólar Americano' },
     { value: 'EUR', label: 'Euro' },
     { value: 'JPY', label: 'Iene Japonês' },
@@ -58,7 +61,7 @@ const Home = () => {
           onChange={e => setCurrency(e.target.value)}
         />
 
-        <Button type="submit">Converter em reais</Button>
+        <Button type="submit" disabled={!currency}>Converter em reais</Button>
       </form>
       {error && <div className="text-red-500 mt-4 text-lg">Erro: {error}</div>}
       <ResultDisplay result={result} />

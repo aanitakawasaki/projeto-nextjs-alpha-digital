@@ -1,7 +1,8 @@
-const Button = ({ onClick, children }) => (
+const Button = ({ onClick, children, disabled }) => (
   <button 
     onClick={onClick}
-    className="button" 
+    className={`button ${disabled ? 'button-disabled' : ''}`} 
+    disabled={disabled}
   >
     {children}
   </button>
