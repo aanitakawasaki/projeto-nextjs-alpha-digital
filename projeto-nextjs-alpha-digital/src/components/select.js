@@ -14,5 +14,6 @@ const Select = ({ options, selected, onChange }) => (
     ))}
   </select>
 );
+//[já entendi]
 
 export default Select;
