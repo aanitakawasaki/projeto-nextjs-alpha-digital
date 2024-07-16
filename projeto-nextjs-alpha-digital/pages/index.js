@@ -5,34 +5,34 @@ import Input from '../src/components/input';
 import Select from '../src/components/select';
 import Button from '../src/components/button';
 import ResultDisplay from '../src/components/resultDisplay';
-import axios from 'axios';  // Import Axios
 
 const Home = () => {
   const [amount, setAmount] = useState('');
-  const [currency, setCurrency] = useState(''); // Valor padrão vazio
+  const [currency, setCurrency] = useState(''); 
   const [result, setResult] = useState('');
-  const [error, setError] = useState(null);  // Para lidar com erros
+  //estados são definidos para armazenar a quantia em questão, a moeda selecionada para conversão e o resultado da conversão
 
   const handleConvert = async (e) => {
-    e.preventDefault();  // Previne o comportamento padrão do formulário
+    e.preventDefault();
+    //previne comportamento padrão de formulários
 
     try {
-      // Faça a requisição ao backend
-      const response = await axios.get(`http://localhost:3000/api/cotacao/${currency}`);
-      const rate = response.data[0]?.value; // Supondo que o valor da cotação esteja no primeiro item do array retornado
+      const response = await fetch(`http://localhost:3000/api/cotacao/${currency}`);
+      const data = await response.json();
+      const rate = data[0]?.value;
+      //com esse fetch obtemos a taxa de câmbio da moeda em questão
 
       if (!rate) {
         throw new Error('Cotação não encontrada');
       }
 
-      // Calcula a conversão
       const converted = amount * rate;
+      //multiplicamos a quantia em questão pela taxa de câmbio em questão
       setResult(`${converted.toFixed(2)} BRL`);
-      setError(null);  // Limpa qualquer erro anterior
+      //guardamos o resultado da conversão em result
     } catch (err) {
       console.error(err);
-      setError('Erro ao buscar a cotação. Tente novamente mais tarde.');
-      setResult('');  // Limpa o resultado anterior
+      setResult('Erro ao buscar a cotação. Tente novamente mais tarde.');
     }
   };
 
@@ -49,22 +49,34 @@ const Home = () => {
 
   return (
     <div className="container">
-      <h1 className="text-3xl font-bold mb-4">Converter</h1>
-      <form className="space-y-4" onSubmit={handleConvert}>
-        <label className="label" htmlFor="amount">Valor</label>
+      <h1>
+        CONVERT
+      </h1>
+      <form onSubmit={handleConvert}>
+        {/*ao submeter o formulário, chamamos a função handleConvert */}
+        <label htmlFor="amount">
+          VALOR
+        </label>
         <Input id="amount" value={amount} onChange={e => setAmount(e.target.value)} />
+        {/*o valor inicial do input é '', afinal foi definido acima useState('') para o [amount, setAmount], quando ele for modificado(onChange), será o valor do input*/}
 
-        <label className="label" htmlFor="currency">Moeda</label>
+        <label className="label" htmlFor="currency">
+          MOEDA
+        </label>
         <Select id="currency"
           options={currencyOptions}
           selected={currency}
           onChange={e => setCurrency(e.target.value)}
         />
+        {/*aqui ele coloca como opções as currencyOptions definidas acima. no selected ele pega o valor do useState de [currency, setCurrency] que tem como label a frase 'Selecione a moeda'. quando ele for modificado(onChange), currency será o valor do input*/}
 
-        <Button type="submit" disabled={!currency}>Converter em reais</Button>
+        <Button type="submit" disabled={!currency}>
+          Converter em reais
+        </Button>
+        {/*aqui o botão será desabilitado (disabled) se a variável currency for uma string vazia (''), ou seja, o botão ficará desabilitado até que o usuário selecione uma moeda. */}
       </form>
-      {error && <div className="text-red-500 mt-4 text-lg">Erro: {error}</div>}
       <ResultDisplay result={result} />
+      {/*ResultDisplay recebe uma prop chamada result, que contém o valor resultante da conversão de moeda. quando o valor de result é atualizado, o componente ResultDisplay re-renderiza para mostrar o novo valor. */}
     </div>
   );
 };
