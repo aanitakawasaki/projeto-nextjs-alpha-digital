@@ -1,0 +1,5 @@
+(já deve ter um container pro postgres criado e em andamento)
+
+/backend/converter-backend# npm start
+
+/projeto-nextjs-alpha-digital$ npm run dev
