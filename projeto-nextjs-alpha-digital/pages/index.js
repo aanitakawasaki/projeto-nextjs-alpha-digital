@@ -28,7 +28,7 @@ const Home = () => {
 
       const converted = amount * rate;
       //multiplicamos a quantia em questão pela taxa de câmbio em questão
-      setResult(`${converted.toFixed(2)} BRL`);
+      setResult(`${converted.toFixed(2)} Reais`);
       //guardamos o resultado da conversão em result
     } catch (err) {
       console.error(err);
